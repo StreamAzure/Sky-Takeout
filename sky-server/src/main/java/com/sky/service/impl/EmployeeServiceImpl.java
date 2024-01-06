@@ -18,6 +18,7 @@ import com.sky.result.PageResult;
 import com.sky.service.EmployeeService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;
 
@@ -100,6 +101,18 @@ public class EmployeeServiceImpl implements EmployeeService {
     public void changeStatus(Integer status, Long id) {
         Employee employee = Employee.builder().status(status).id(id).build();
         employeeMapper.update(employee);
+    }
+
+    @Override
+    public void edit(EmployeeDTO employeeDTO) {
+        Employee employee = new Employee();
+        BeanUtils.copyProperties(employeeDTO, employee);
+        employeeMapper.update(employee);
+    }
+
+    @Override
+    public Employee getById(Long id) {
+       return employeeMapper.query(id);
     }
 
 }
