@@ -20,4 +20,6 @@ public interface DishService {
     DishVO queryById(Long id);
 
     void changeStatus(int status, Long id);
+
+    List<Dish> queryByCategoryId(Long categoryId);
 }

@@ -98,6 +98,11 @@ public class DishServiceImpl implements DishService {
     }
 
     @Override
+    public List<Dish> queryByCategoryId(Long categoryId) {
+        return dishMapper.getByCategoryId(categoryId);
+    }
+
+    @Override
     public void editWithFlavor(DishDTO dishDTO) {
         Dish dish = new Dish();
         BeanUtils.copyProperties(dishDTO, dish);
