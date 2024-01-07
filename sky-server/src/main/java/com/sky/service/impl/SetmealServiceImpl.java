@@ -24,6 +24,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class SetmealServiceImpl implements SetmealService {
@@ -101,5 +102,12 @@ public class SetmealServiceImpl implements SetmealService {
             // 删除关联的 setmeal_dish 数据
             setmealDishMapper.deleteDishes(id);
         }
+    }
+
+    @Override
+    public void changeStatus(int status, Long id) {
+        Setmeal setmeal = setmealMapper.getById(id);
+        setmeal.setStatus(status);
+        setmealMapper.update(setmeal);
     }
 }
