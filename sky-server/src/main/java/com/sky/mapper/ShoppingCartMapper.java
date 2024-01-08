@@ -29,6 +29,17 @@ public interface ShoppingCartMapper {
             "VALUES (#{name}, #{image}, #{userId}, #{dishId}, #{setmealId}, #{dishFlavor}, #{number}, #{amount}, #{createTime})")
     void insert(ShoppingCart shoppingCart);
 
+    /**
+     * 根据购物车项目 id 删除项目
+     * @param shoppingCart
+     */
     @Delete("delete from shopping_cart where id = #{id}")
     void delete(ShoppingCart shoppingCart);
+
+    /**
+     * 根据用户ID删除其购物车所有项目
+     * @param shoppingCart
+     */
+    @Delete("delete from shopping_cart where user_id = #{userId}")
+    void deleteByUserId(ShoppingCart shoppingCart);
 }

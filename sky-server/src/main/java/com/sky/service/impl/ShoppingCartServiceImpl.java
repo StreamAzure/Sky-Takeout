@@ -88,4 +88,13 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
             shoppingCartMapper.updateNumberById(shoppingCart);
         }
     }
+
+    @Override
+    public void clean() {
+        ShoppingCart shoppingCart = ShoppingCart
+                .builder()
+                .userId(BaseContext.getCurrentId())
+                .build();
+        shoppingCartMapper.deleteByUserId(shoppingCart);
+    }
 }
