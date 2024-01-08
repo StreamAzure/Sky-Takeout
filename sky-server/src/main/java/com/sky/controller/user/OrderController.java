@@ -1,5 +1,7 @@
 package com.sky.controller.user;
 
+import com.github.pagehelper.Page;
+import com.sky.dto.OrdersPageQueryDTO;
 import com.sky.dto.OrdersPaymentDTO;
 import com.sky.dto.OrdersSubmitDTO;
 import com.sky.result.PageResult;
@@ -53,6 +55,11 @@ public class OrderController {
         return Result.success();
     }
 
+    /**
+     * 取消订单
+     * @param id
+     * @return
+     */
     @PutMapping("/cancel/{id}")
     @ApiOperation("取消订单")
     public Result cancel(@PathVariable Long id){
@@ -61,6 +68,26 @@ public class OrderController {
         return Result.success();
     }
 
+    @GetMapping("/historyOrders")
+    @ApiOperation("历史订单查询")
+    public Result<PageResult> queryHistoryOrders(OrdersPageQueryDTO ordersPageQueryDTO){
+        log.info("历史订单查询: {}", ordersPageQueryDTO);
+        PageResult pageResult = orderService.pageQuery4User(ordersPageQueryDTO);
+        return Result.success(pageResult);
+    }
+
+    /**
+     * 查询订单详情
+     *
+     * @param id
+     * @return
+     */
+    @GetMapping("/orderDetail/{id}")
+    @ApiOperation("查询订单详情")
+    public Result<OrderVO> details(@PathVariable("id") Long id) {
+        OrderVO orderVO = orderService.details(id);
+        return Result.success(orderVO);
+    }
 
     /**
      * 订单支付

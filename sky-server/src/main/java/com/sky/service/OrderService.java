@@ -1,6 +1,7 @@
 package com.sky.service;
 
 import com.sky.dto.*;
+import com.sky.result.PageResult;
 import com.sky.vo.*;
 
 public interface OrderService {
@@ -36,4 +37,8 @@ public interface OrderService {
      * @param id
      */
     void cancel(Long id);
+
+    PageResult pageQuery4User(OrdersPageQueryDTO ordersPageQueryDTO);
+
+    OrderVO details(Long id);
 }
