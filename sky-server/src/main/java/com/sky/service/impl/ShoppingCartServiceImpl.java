@@ -91,10 +91,6 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
 
     @Override
     public void clean() {
-        ShoppingCart shoppingCart = ShoppingCart
-                .builder()
-                .userId(BaseContext.getCurrentId())
-                .build();
-        shoppingCartMapper.deleteByUserId(shoppingCart);
+        shoppingCartMapper.deleteByUserId(BaseContext.getCurrentId());
     }
 }
