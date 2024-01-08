@@ -46,4 +46,8 @@
         where id = #{id}
     </update>
 
+    <select id="list" resultType="com.sky.entity.Dish">
+        select * from dish where category_id = #{categoryId} and status = #{status}
+    </select>
+
 </mapper>
