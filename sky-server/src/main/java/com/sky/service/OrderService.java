@@ -47,4 +47,14 @@ public interface OrderService {
     PageResult pageQuery4Admin(OrdersPageQueryDTO ordersPageQueryDTO);
 
     OrderStatisticsVO countStatistics();
+
+    void confirmOrder(OrdersConfirmDTO ordersConfirmDTO);
+
+    void rejectOrder(OrdersRejectionDTO ordersRejectionDTO);
+
+    void deliveryOrder(Long id);
+
+    void cancel(OrdersCancelDTO ordersCancelDTO);
+
+    void complete(Long id);
 }
