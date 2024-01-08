@@ -43,4 +43,6 @@ public interface OrderService {
     void userCancelById(Long id) throws Exception;
 
     void repetition(Long id);
+
+    PageResult pageQuery4Admin(OrdersPageQueryDTO ordersPageQueryDTO);
 }
