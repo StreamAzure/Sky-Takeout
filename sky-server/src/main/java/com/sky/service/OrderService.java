@@ -32,13 +32,13 @@ public interface OrderService {
      */
     void reminder(Long id);
 
+    PageResult pageQuery4User(OrdersPageQueryDTO ordersPageQueryDTO);
+
+    OrderVO details(Long id);
+
     /**
      * 用户取消订单
      * @param id
      */
-    void cancel(Long id);
-
-    PageResult pageQuery4User(OrdersPageQueryDTO ordersPageQueryDTO);
-
-    OrderVO details(Long id);
+    void userCancelById(Long id) throws Exception;
 }
