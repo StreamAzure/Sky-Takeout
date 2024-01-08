@@ -222,6 +222,11 @@ public class OrderServiceImpl implements OrderService {
         return orderVO;
     }
 
+    /**
+     * 用户退单
+     * @param id
+     * @throws Exception
+     */
     @Override
     public void userCancelById(Long id) throws Exception{
         // 根据id查询订单
