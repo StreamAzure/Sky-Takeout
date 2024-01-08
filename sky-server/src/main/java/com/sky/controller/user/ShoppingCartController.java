@@ -35,4 +35,12 @@ public class ShoppingCartController {
         List<ShoppingCart> shoppingCartList = shoppingCartService.list();
         return Result.success(shoppingCartList);
     }
+
+    @PostMapping("/sub")
+    @ApiOperation("删除购物车的一个商品")
+    public Result sub(@RequestBody ShoppingCartDTO shoppingCartDTO){
+        log.info("删除购物车商品");
+        shoppingCartService.sub(shoppingCartDTO);
+        return Result.success();
+    }
 }
