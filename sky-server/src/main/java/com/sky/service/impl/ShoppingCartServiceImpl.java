@@ -31,7 +31,7 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
     public void add(ShoppingCartDTO shoppingCartDTO) {
         // 1. 只能查询自己的购物车数据
         ShoppingCart shoppingCart = new ShoppingCart();
-        shoppingCart.setId(BaseContext.getCurrentId());
+        shoppingCart.setUserId(BaseContext.getCurrentId());
         BeanUtils.copyProperties(shoppingCartDTO, shoppingCart);
         // 2. 判断当前要添加的商品是否已在购物车
         List<ShoppingCart> shoppingCartList = shoppingCartMapper.list(shoppingCart);
@@ -61,5 +61,13 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
             shoppingCart.setCreateTime(LocalDateTime.now());
             shoppingCartMapper.insert(shoppingCart);
         }
+    }
+
+    @Override
+    public List<ShoppingCart> list() {
+        Long userId = BaseContext.getCurrentId();
+        ShoppingCart shoppingCart = new ShoppingCart();
+        shoppingCart.setUserId(userId);
+        return shoppingCartMapper.list(shoppingCart);
     }
 }
