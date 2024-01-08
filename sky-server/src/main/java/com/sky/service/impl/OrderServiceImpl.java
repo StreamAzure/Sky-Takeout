@@ -253,6 +253,15 @@ public class OrderServiceImpl implements OrderService {
         return new PageResult(page.getTotal(), list);
     }
 
+    @Override
+    public OrderStatisticsVO countStatistics() {
+        OrderStatisticsVO orderStatisticsVO = new OrderStatisticsVO();
+        orderStatisticsVO.setToBeConfirmed(orderMapper.toBeConfirmedCount());
+        orderStatisticsVO.setConfirmed(orderMapper.confirmedCount());
+        orderStatisticsVO.setDeliveryInProgress(orderMapper.deliveryInProgressCount());
+        return orderStatisticsVO;
+    }
+
     /**
      * 查询订单详情
      *

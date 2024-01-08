@@ -4,6 +4,7 @@ import com.github.pagehelper.Page;
 import com.sky.dto.GoodsSalesDTO;
 import com.sky.dto.OrdersPageQueryDTO;
 import com.sky.entity.Orders;
+import com.sky.vo.OrderStatisticsVO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 import java.time.LocalDateTime;
@@ -53,4 +54,25 @@ public interface OrderMapper {
      */
     @Select("select * from orders where status = #{status} and order_time < #{orderTime}")
     List<Orders> getByStatusAndOrdertimeLT(Integer status, LocalDateTime orderTime);
+
+    /**
+     * 统计待接单数量
+     * @return
+     */
+    @Select("SELECT COUNT(*) as orderCount from orders where status = 2")
+    int toBeConfirmedCount();
+
+    /**
+     * 统计已接单数量
+     * @return
+     */
+    @Select("SELECT COUNT(*) as orderCount from orders where status = 3")
+    int confirmedCount();
+
+    /**
+     * 统计派送中数量
+     * @return
+     */
+    @Select("SELECT COUNT(*) as orderCount from orders where status = 4")
+    int deliveryInProgressCount();
 }

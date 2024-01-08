@@ -45,4 +45,6 @@ public interface OrderService {
     void repetition(Long id);
 
     PageResult pageQuery4Admin(OrdersPageQueryDTO ordersPageQueryDTO);
+
+    OrderStatisticsVO countStatistics();
 }
