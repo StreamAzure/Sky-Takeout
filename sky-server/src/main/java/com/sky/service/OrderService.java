@@ -30,4 +30,10 @@ public interface OrderService {
      * @param id
      */
     void reminder(Long id);
+
+    /**
+     * 用户取消订单
+     * @param id
+     */
+    void cancel(Long id);
 }

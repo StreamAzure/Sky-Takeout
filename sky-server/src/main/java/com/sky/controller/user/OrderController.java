@@ -45,11 +45,19 @@ public class OrderController {
      * @param id
      * @return
      */
-    @GetMapping("reminder/{id}")
+    @GetMapping("/reminder/{id}")
     @ApiOperation("催单")
     public Result reminder(@PathVariable Long id){
         log.info("用户催单：{}", id);
         orderService.reminder(id);
+        return Result.success();
+    }
+
+    @PutMapping("/cancel/{id}")
+    @ApiOperation("取消订单")
+    public Result cancel(@PathVariable Long id){
+        log.info("用户取消订单: {}", id);
+        orderService.cancel(id);
         return Result.success();
     }
 

@@ -8,5 +8,9 @@ import java.util.List;
 @Mapper
 public interface OrderDetailMapper {
 
+    /**
+     * 批量插入订单菜品数据
+     * @param orderDetailList
+     */
     void insertBatch(List<OrderDetail> orderDetailList);
 }

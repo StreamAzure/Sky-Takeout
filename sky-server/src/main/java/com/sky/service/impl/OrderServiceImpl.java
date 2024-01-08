@@ -173,6 +173,15 @@ public class OrderServiceImpl implements OrderService {
      */
     @Override
     public void reminder(Long id) {
+        //TODO:怎么催单？
+    }
 
+    /**
+     * 用户取消订单
+     * @param id
+     */
+    @Override
+    public void cancel(Long id) {
+        //TODO:取消订单
     }
 }
