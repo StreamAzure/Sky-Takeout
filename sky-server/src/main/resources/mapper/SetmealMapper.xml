@@ -9,6 +9,18 @@
         (#{categoryId}, #{name}, #{price}, #{status}, #{description}, #{image}, #{createTime}, #{updateTime}, #{createUser}, #{updateUser})
     </insert>
 
+    <select id="countByMap" resultType="java.lang.Integer">
+        select count(id) from setmeal
+        <where>
+            <if test="status != null">
+                and status = #{status}
+            </if>
+            <if test="categoryId != null">
+                and category_id = #{categoryId}
+            </if>
+        </where>
+    </select>
+
     <select id="pageQuery" resultType="com.sky.vo.SetmealVO">
         select sm.*, c.name as categoryName from setmeal sm left outer join category c on sm.category_id = c.id
         <where>

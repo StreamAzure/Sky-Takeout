@@ -68,4 +68,13 @@
         order by order_time desc
     </select>
 
+    <select id="countByMap" resultType="Integer">
+        select count(*) as orderCount from orders
+        <where>
+            <if test = "status != null">
+                and status = #{status}
+            </if>
+        </where>
+    </select>
+
 </mapper>

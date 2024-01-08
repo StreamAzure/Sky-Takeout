@@ -75,4 +75,9 @@ public interface OrderMapper {
      */
     @Select("SELECT COUNT(*) as orderCount from orders where status = 4")
     int deliveryInProgressCount();
+
+    Integer countByMap(Map map);
+
+    @Select("select SUM(amount) as turnover FROM orders WHERE order_time BETWEEN #{begin} AND #{end}")
+    Double sumByMap(Map map);
 }
