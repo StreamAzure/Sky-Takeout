@@ -78,6 +78,9 @@ public interface OrderMapper {
 
     Integer countByMap(Map map);
 
-    @Select("select SUM(amount) as turnover FROM orders WHERE order_time BETWEEN #{begin} AND #{end}")
     Double sumByMap(Map map);
+
+    Integer countUserByMap(Map map);
+
+    List<GoodsSalesDTO> getSalesTop(Map map);
 }
