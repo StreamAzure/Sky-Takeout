@@ -1,0 +1,36 @@
+version: "3.8"
+
+services:
+  sky-admin:
+    container_name: sky-admin
+    build:
+      context: ./sky-admin
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+    networks:
+      - sky-net
+
+  sky-mysql:
+    container_name: sky-mysql-db
+    image: mysql:8.0.33
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: 123
+    volumes:
+      - ./sky.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - sky-net
+
+  sky-redis:
+    container_name: sky-redis-db
+    image: redis:6.0
+    ports:
+      - "6379:6379"
+    networks:
+      - sky-net
+
+networks:
+  sky-net:
+    driver: bridge
